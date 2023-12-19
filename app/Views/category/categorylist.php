@@ -40,7 +40,7 @@
                     <a href="categoryadd"  class="btn-group"><button type="button" class="btn btn-success">ADD New</button></a>
                     </div><br>
                     <div class="row">
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -52,17 +52,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Rahim</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
@@ -74,6 +63,23 @@
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
+                            <tbody>
+                                <?php foreach($category as $item):?>
+                                <tr>
+                                    <td><?= $item['id']?></td>
+                                    <td><?= $item['name']?></td>
+                                    <td><?= $item['description']?></td>
+                                    <td><?= $item['created_at']?></td>
+                                    <td><?= $item['modified_at']?></td>
+                                    <td><?= $item['deleted_at']?></td>
+                                    <td>
+                                      <a href="#" class="btn btn-success">Edit</a>  <br>
+                                      <a href="#" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <?php endforeach;?>
+                            </tbody>
+                            
                         </table>
                     </div>
 

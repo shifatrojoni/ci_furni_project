@@ -29,3 +29,7 @@ $routes->post('customer/store', 'Customer::store');
 $routes->get('customer/edit/(:num)', 'Customer::edit/$1');
 $routes->post('customer/upload/(:num)', 'Customer::upload/$1');
 $routes->get('customer/delete/(:num)', 'Customer::delete/$1');
+
+//message
+$routes->get('message', 'Message::index');
+$routes->get('message/delete/(:num)', 'Message::delete/$1');

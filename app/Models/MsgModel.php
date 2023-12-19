@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class MsgModel extends Model
 {
-    protected $table            = 'product_category';
+    protected $table            = 'msg';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','name','description','created_at','modified_at','deleted_at'];
+    protected $allowedFields    = ['id','f_name','l_name','email','message','status'];
 
     // Dates
     protected $useTimestamps = false;

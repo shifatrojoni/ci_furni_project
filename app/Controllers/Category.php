@@ -3,12 +3,19 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CategoryModel;
 
 class Category extends BaseController
 {
+    private $category;
+    public function __construct()
+    {
+        $this->category = new CategoryModel();
+    }
     public function index()
     {
-        return view('category/categorylist');
+        $data['category'] = $this->category->findAll();
+        return view('category/categorylist',$data);
     }
     public function create(){
         return view('category/categoryadd');
