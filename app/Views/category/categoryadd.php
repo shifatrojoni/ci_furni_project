@@ -16,7 +16,7 @@
 
     <title>Forms | AdminKit Demo</title>
 
-    <link href="assets/css/app.css" rel="stylesheet">
+    <link href="<?= site_url('assets/css/app.css')?>" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -38,11 +38,11 @@
                     </div>
                     <div class="row">
                         <div>
-                            <form class="row g-3 needs-validation" action="/category/store" enctype="multipart/form-data" method="post" novalidate>
+                            <form class="row g-3 needs-validation" action="<?php echo base_url('/category/store') ?>" enctype="multipart/form-data" method="post" novalidate>
 
                                 <div class="col-md-12">
                                     <label for="bsValidation3" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" id="bsValidation3" placeholder="Enter category name" name="cname" required>
+                                    <input type="text" name="name" class="form-control" id="bsValidation3" placeholder="Enter category name" name="name" required>
                                     <div class="invalid-feedback">
                                         Please choose a username.
                                     </div>

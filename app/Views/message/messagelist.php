@@ -37,7 +37,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="categoryadd" class="btn-group"><button type="button" class="btn btn-success">ADD New</button></a>
+                        <a href="messageadd" class="btn-group"><button type="button" class="btn btn-success">ADD New</button></a>
                     </div><br>
                     <?php if (session()->getFlashdata('rojoni')) : ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

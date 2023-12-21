@@ -2,109 +2,153 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="assets/img/icons/icon-48x48.png" />
+    <title>Product Entry</title>
 
-    <link rel="canonical" href="https://demo-basic.adminkit.io/ui-forms.html" />
+    <!-- Custom fonts for this template -->
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <title>Forms | AdminKit Demo</title>
+    <!-- Custom styles for this template -->
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="assets/css/app.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
-<body>
-    <div class="wrapper">
-        <?php echo $this->include('includes/sidebar.php') ?>
+<body id="page-top">
 
-        <div class="main">
-            <?php echo $this->include('includes/topbar.php') ?>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-            <main class="content">
-                <div class="container-fluid p-0">
+        <!-- Sidebar -->
+        <?php echo $this->include("includes/sidebar")?>
+        <!-- End of Sidebar -->
 
-                    <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Forms</h1>
-                        <a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
-                            Get more form examples
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div>
-                            <form class="row g-3 needs-validation" action="/product/store" enctype="multipart/form-data" method="post" novalidate>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <?php echo $this->include("includes/topbar")?>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Product Form</h5>
+                            <?php echo validation_list_errors() ?>  
+                            
+                            <!-- No Labels Form -->
+                            <form class="row g-3" action="/products/store" method="post" enctype="multipart/form-data">
                                 <div class="col-md-12">
-                                    <label for="bsValidation3" class="form-label">Product Name</label>
-                                    <input type="text" class="form-control" id="bsValidation3" placeholder="Enter category name" name="cname" required>
-                                    <div class="invalid-feedback">
-                                        Please choose a username.
-                                    </div>
+                                    <input type="text" class="form-control" placeholder="Product Name" name="name" value="<?= set_value('name') ?>">
+                                <span><?php //if($validation->hasError('name')) {echo validation_show_error('name'); } ?> </span>   
                                 </div>
+                                
+                                <div class="col-md-6">
+                                    <select id="inputState" class="form-select" name="cat">
+                                        <option selected>Category</option>
+                                       <?php 
+                                      // print_r($cats);
+                                            foreach($cats as $cat):
+                                       ?>
+                                        <option value="<?= $cat['id']; ?>"><?= $cat['category'] ?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Model" name="model" value="<?= set_value('model') ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Price" name="price" value="<?= set_value('price') ?>">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="SKU" name="sku" value="<?= set_value('sku') ?>">
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="file" class="form-control" placeholder="Add a photo" name="photo" value="<? //set_value('photo') ?>">
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                </div>
+                            </form><!-- End No Labels Form -->
 
-                                <div class="col-md-12">
-                                    <label for="bsValidation13" class="form-label">Product Description</label>
-                                    <textarea class="form-control" id="bsValidation13" placeholder="description ..." name="description" rows="3" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid address.
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="bsValidation14" required>
-                                        <label class="form-check-label" for="bsValidation14">Agree to terms and conditions</label>
-                                        <div class="invalid-feedback">
-                                            You must agree before submitting.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="d-md-flex d-grid align-items-center gap-3">
-                                        <button type="submit" class="btn btn-primary px-4">ADD</button>
-                                        <button type="reset" class="btn btn-light px-4">Reset</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
+                    
 
                 </div>
-            </main>
+                <!-- /.container-fluid -->
 
-            <?php echo $this->include('includes/footer.php') ?>
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <?php echo $this->include("includes/footer")?>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-            'use strict'
+    <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
+    <!-- Core plugin JavaScript-->
+    <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
+    <!-- Custom scripts for all pages-->
+    <script src="../assets/js/sb-admin-2.min.js"></script>
 
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
+    <!-- Page level plugins -->
+    <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <script src="assets/js/app.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="../assets/js/demo/datatables-demo.js"></script>
 
 </body>
 

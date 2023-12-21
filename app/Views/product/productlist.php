@@ -31,7 +31,7 @@
                 <div class="container-fluid p-0">
 
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Forms</h1>
+                        <h1 class="h3 d-inline align-middle">Table</h1>
                         <a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
                             Get more form examples
                         </a>
@@ -57,19 +57,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php // print_r($items);?>
+                                <?php foreach ($product as $item): ?>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?= $item['id']?></td>
                                 </tr>
+                                <?php endforeach;?>
                             </tbody>
                             <tfoot>
                                 <tr>

@@ -6,11 +6,19 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+
+
+// Signin, Signup
+$routes->get('register', 'SignupController::index');
+$routes->match(['get', 'post'], 'register/store', 'SignupController::store');
+$routes->get('signin', 'SigninController::index');
+$routes->post('login', 'SigninController::login');
+$routes->get('signout', 'SigninController::logout');
 //category
 $routes->get('category', 'Category::index');
 $routes->get('categoryadd', 'Category::create');
 $routes->post('category/store', 'Category::store');
-$routes->get('category/edit/(:num)', 'Category::edit/$1');
+$routes->get('category/editform/(:num)', 'Category::edit/$1');
 $routes->post('category/upload/(:num)', 'Category::upload/$1');
 $routes->get('category/delete/(:num)', 'Category::delete/$1');
 
@@ -32,4 +40,9 @@ $routes->get('customer/delete/(:num)', 'Customer::delete/$1');
 
 //message
 $routes->get('message', 'Message::index');
+$routes->get('messageadd', 'Message::create');
+$routes->post('message/store', 'Message::store');
+$routes->get('message/edit/(:num)', 'Message::edit/$1');
+$routes->post('message/upload/(:num)', 'Message::upload/$1');
 $routes->get('message/delete/(:num)', 'Message::delete/$1');
+

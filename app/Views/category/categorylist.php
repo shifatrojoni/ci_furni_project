@@ -73,8 +73,8 @@
                                     <td><?= $item['modified_at']?></td>
                                     <td><?= $item['deleted_at']?></td>
                                     <td>
-                                      <a href="#" class="btn btn-success">Edit</a>  <br>
-                                      <a href="#" class="btn btn-danger">Delete</a>
+                                      <a href="<?php echo base_url('/category/editform/' . $item['id']) ?>" class="btn btn-success">Edit</a>  <br>
+                                      <a href="<?php echo base_url('/category/delete/' . $item['id']) ?>" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                                 <?php endforeach;?>
